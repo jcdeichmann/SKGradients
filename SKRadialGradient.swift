@@ -9,6 +9,7 @@
 
 import SpriteKit
 
+/// SKRadielGradient is a SKSpriteNode radial gradient
 public class SKRadialGradient: SKSpriteNode{
     private var _inputRadiusZero: CGFloat = 0.0
     var inputRadiusZero: CGFloat{
@@ -64,6 +65,9 @@ public class SKRadialGradient: SKSpriteNode{
     
     var image: CGImage!
     
+    /// Initializes a white radial gradient
+    ///
+    /// - Parameter size: size of desired radial gradient
     init(size: CGSize){
         self._colorOne = CIColor(color: .white)
         self._colorTwo = CIColor(color: .clear)
@@ -86,6 +90,12 @@ public class SKRadialGradient: SKSpriteNode{
         super.init(texture: texture, color: .white, size: size)
     }
     
+    /// Initializes a radial gradient
+    ///
+    /// - Parameters:
+    ///   - size: size of the gradient
+    ///   - colorOne: primary color
+    ///   - colorTwo: secondary color
     init(size: CGSize, colorOne: UIColor, colorTwo: UIColor){
         self._colorOne = CIColor(color: colorOne)
         self._colorTwo = CIColor(color: colorTwo)
@@ -108,6 +118,14 @@ public class SKRadialGradient: SKSpriteNode{
         super.init(texture: texture, color: .white, size: size)
     }
     
+    /// Initializes a radial gradient
+    ///
+    /// - Parameters:
+    ///   - size: size
+    ///   - colorOne: primary color
+    ///   - colorTwo: secondary color
+    ///   - inputRadius: size of primary color radius
+    ///   - center: location of center within object
     init(size: CGSize, colorOne: UIColor, colorTwo: UIColor, inputRadius: CGFloat, center: CGPoint) {
         self._colorOne = CIColor(color: colorOne)
         self._colorTwo = CIColor(color: colorTwo)
@@ -134,6 +152,7 @@ public class SKRadialGradient: SKSpriteNode{
         fatalError("init(coder:) has not been implemented")
     }
     
+    /// Updates the radius when attributes change
     private func updateGradient(){
         let context = CIContext(options: nil)
         let filter = CIFilter(name: "CIRadialGradient")
